@@ -88,7 +88,12 @@ extension FirstViewController: UICollectionViewDelegate {
                 self.collectionView.reloadData()
             }
         }
-        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = SecondViewController()
+        vc.image = photos[indexPath.row].urls.regular
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

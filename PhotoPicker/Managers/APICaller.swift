@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Constants {
     static let APIKey = "N1wqDVIrlpV24mawPNS8QkA6Nb2KhFpkUZLrkJZ47eg"
@@ -36,6 +37,18 @@ final class APICaller {
             } catch {
                 print(error)
             }
+        }
+        task.resume()
+    }
+    
+    public func getImage(from url: String, completion: @escaping (UIImage?) -> Void){
+        guard let url = URL(string: url) else { return }
+        let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, _, error in
+            guard let data = data, error == nil, let image = UIImage(data: data) else {
+                completion(nil)
+                return
+            }
+            completion(image)
         }
         task.resume()
     }
