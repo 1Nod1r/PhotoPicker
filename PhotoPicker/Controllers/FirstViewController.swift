@@ -11,7 +11,7 @@ class FirstViewController: UIViewController {
     
     var collectionView: UICollectionView!
     var photos: [Results] = [Results]()
-    var page = 1
+    var page = 0
     var query: String?
     
     func configureSearchController(){
@@ -38,7 +38,7 @@ class FirstViewController: UIViewController {
         view.backgroundColor = .systemBackground
         configureSearchController()
         configureCollectionView()
-        getPhotos(query: query ?? "office", page: page)
+        getPhotos(query: query ?? "nature", page: page)
     }
     
     private func getPhotos(query: String,page: Int){
@@ -83,21 +83,25 @@ extension FirstViewController: UICollectionViewDelegate {
         let height = scrollView.frame.size.height
         if offSetY > contentHeight - height {
             page += 1
-            getPhotos(query: query ?? "sun", page: page)
+            DispatchQueue.main.async {
+                self.getPhotos(query: self.query ?? "movie", page: self.page)
+                self.collectionView.reloadData()
+            }
         }
         
     }
 }
 
 extension FirstViewController: UISearchBarDelegate {
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
+            query = text
             photos = []
-            DispatchQueue.main.async { 
+            getPhotos(query: query ?? "office", page: page)
+            DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
-            getPhotos(query: text, page: page)
         }
     }
 }
