@@ -35,7 +35,6 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
         configureSearchController()
         configureCollectionView()
         getPhotos(query: query ?? "nature", page: page)
@@ -83,7 +82,8 @@ extension FirstViewController: UICollectionViewDelegate {
         let height = scrollView.frame.size.height
         if offSetY > contentHeight - height {
             page += 1
-            DispatchQueue.main.async {
+            DispatchQueue.main.async {[weak self] in
+                guard let self = self else { return }
                 self.getPhotos(query: self.query ?? "movie", page: self.page)
                 self.collectionView.reloadData()
             }

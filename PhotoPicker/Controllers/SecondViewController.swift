@@ -29,8 +29,9 @@ class SecondViewController: UIViewController {
     }
     
     private func getPhoto(){
-        APICaller.shared.getImage(from: image) { image in
-            DispatchQueue.main.async {
+        APICaller.shared.getImage(from: image) {image in
+            DispatchQueue.main.async {[weak self] in
+                guard let self = self else { return }
                 self.imageView.image = image
             }
         }

@@ -19,7 +19,6 @@
 		86154ABC2820049300CC2A76 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154ABB2820049300CC2A76 /* PhotoCell.swift */; };
 		86154AC22820072600CC2A76 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AC12820072600CC2A76 /* APICaller.swift */; };
 		86154AC8282009CF00CC2A76 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AC7282009CF00CC2A76 /* Model.swift */; };
-		86D051E62820861B00F9A727 /* SecondViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D051E52820861B00F9A727 /* SecondViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +37,6 @@
 		86154ABB2820049300CC2A76 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		86154AC12820072600CC2A76 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		86154AC7282009CF00CC2A76 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		86D051E52820861B00F9A727 /* SecondViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewModel.swift; sourceTree = "<group>"; };
 		AB6D2D9411D6038AFC85AE7C /* Pods_PhotoPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -92,12 +90,12 @@
 		86154A9D282001CE00CC2A76 /* PhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
+				86154ABD282006BA00CC2A76 /* Controllers */,
+				86154AC32820072F00CC2A76 /* Managers */,
 				86154AC0282006DD00CC2A76 /* Views */,
 				86154ABE282006CA00CC2A76 /* Support */,
-				86154ABD282006BA00CC2A76 /* Controllers */,
 				86154AAF282001D100CC2A76 /* Info.plist */,
 				86154AA7282001CE00CC2A76 /* PhotoPicker.xcdatamodeld */,
-				86154AC32820072F00CC2A76 /* Managers */,
 			);
 			path = PhotoPicker;
 			sourceTree = "<group>";
@@ -108,7 +106,6 @@
 				86154AA2282001CE00CC2A76 /* FirstViewController.swift */,
 				86154AB7282002B200CC2A76 /* SecondViewController.swift */,
 				86154AB52820022300CC2A76 /* MainTabBarViewController.swift */,
-				86D051E52820861B00F9A727 /* SecondViewModel.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -263,7 +260,6 @@
 				86154AC8282009CF00CC2A76 /* Model.swift in Sources */,
 				86154ABC2820049300CC2A76 /* PhotoCell.swift in Sources */,
 				86154A9F282001CE00CC2A76 /* AppDelegate.swift in Sources */,
-				86D051E62820861B00F9A727 /* SecondViewModel.swift in Sources */,
 				86154AA1282001CE00CC2A76 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
