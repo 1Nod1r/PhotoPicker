@@ -12,6 +12,34 @@ class SecondViewController: UIViewController {
     var photos: [Results] = [Results]()
     var image = ""
     
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 21, weight: .bold)
+        return label
+    }()
+    
+    private let downloadsNumberLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 21, weight: .bold)
+        return label
+    }()
+    
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 21, weight: .bold)
+        return label
+    }()
+    
+    private let locationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 21, weight: .bold)
+        return label
+    }()
+    
     private let imageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
@@ -39,6 +67,11 @@ class SecondViewController: UIViewController {
     
     private func configureUI(){
         view.addSubview(imageView)
+        view.addSubview(nameLabel)
+        view.addSubview(downloadsNumberLabel)
+        view.addSubview(locationLabel)
+        view.addSubview(dateLabel)
+
         let padding: CGFloat = 20
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 125),
