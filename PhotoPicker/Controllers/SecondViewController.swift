@@ -9,9 +9,9 @@ import UIKit
 
 class SecondViewController: UIViewController {
     
-    public var completion: ((String)->Void)?
     var photos: [Results] = [Results]()
     var image = ""
+    var indexPath = 0
     
     private let imageView: UIImageView = {
         let image = UIImageView()
@@ -38,6 +38,12 @@ class SecondViewController: UIViewController {
         view.backgroundColor = .systemBackground
         getPhoto()
         configureUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(photos)
+        print(indexPath)
     }
     
     private func getPhoto(){
@@ -74,7 +80,14 @@ class SecondViewController: UIViewController {
         let alertVC = UIAlertController(title: "Success", message: "You liked photo", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel) {[weak self] action in
             guard let self = self else { return }
-            self.completion?(self.image)
+            DataPersistenceManager.shared.saveData(model: self.photos[self.indexPath]) { result in
+                switch result {
+                case .success():
+                    NotificationCenter.default.post(name: NSNotification.Name("liked"), object: nil)
+                case .failure(let error):
+                    print(error)
+                }
+            }
         }
         alertVC.addAction(action)
         present(alertVC, animated: true)

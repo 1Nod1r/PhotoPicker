@@ -8,45 +8,116 @@
 import UIKit
 
 class LikesViewController: UIViewController {
-
+    
+    var photos: [PhotoAttributes] = [PhotoAttributes]()
+    
+    private let noLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.text = "No Label"
+        return label
+    }()
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(LikesTableViewCell.self, forCellReuseIdentifier: LikesTableViewCell.identifier)
         return tableView
     }()
     
-    var imageURL = ""
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
-        print("imageURL: \(imageURL)")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("liked"), object: nil, queue: nil) {[weak self] _ in
+            self?.fetchLocalStorageForDownload()
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+        fetchLocalStorageForDownload()
+
     }
     
+    private func configureLabel(){
+        view.addSubview(noLabel)
+        NSLayoutConstraint.activate([
+            noLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            noLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+
+    }
+    
+    private func fetchLocalStorageForDownload(){
+        DataPersistenceManager.shared.fetchData {[weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let photos):
+                self.photos = photos
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 
 
 }
 
 extension LikesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return photos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LikesTableViewCell.identifier, for: indexPath) as? LikesTableViewCell else { return UITableViewCell() }
-        cell.set(with: imageURL)
+        cell.set(with: photos[indexPath.row].photoURL!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            DispatchQueue.main.async {
+                DataPersistenceManager.shared.deleteFromData(model: self.photos[indexPath.row]) {[weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(()):
+                        print("deleted")
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                    self.photos.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+            }
+            
+        case .none:
+            break
+        case .insert:
+            break
+        @unknown default:
+            break
+        }
     }
     
     

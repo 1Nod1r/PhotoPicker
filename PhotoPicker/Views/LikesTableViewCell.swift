@@ -10,6 +10,7 @@ import SDWebImage
 
 class LikesTableViewCell: UITableViewCell {
     
+    
     static let identifier = "LikesTableViewCell"
     
     private let image: UIImageView = {

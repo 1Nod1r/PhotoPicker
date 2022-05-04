@@ -94,7 +94,8 @@ extension FirstViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SecondViewController()
         vc.image = photos[indexPath.row].urls.regular
-        
+        vc.photos = photos
+        vc.indexPath = indexPath.row
         navigationController?.pushViewController(vc, animated: true)
     }
 }
