@@ -15,7 +15,8 @@ class LikesViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 22, weight: .bold)
-        label.text = "No Label"
+        label.numberOfLines = 2
+        label.text = "No Favorites? \nAdd one on the Home Screen!"
         return label
     }()
     
@@ -34,13 +35,6 @@ class LikesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
-        
         NotificationCenter.default.addObserver(forName: NSNotification.Name("liked"), object: nil, queue: nil) {[weak self] _ in
             self?.fetchLocalStorageForDownload()
             DispatchQueue.main.async {
@@ -48,14 +42,18 @@ class LikesViewController: UIViewController {
             }
         }
         fetchLocalStorageForDownload()
-
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
     }
     
     private func configureLabel(){
         view.addSubview(noLabel)
         NSLayoutConstraint.activate([
             noLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            noLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            noLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor,constant: -100)
         ])
 
     }
@@ -65,7 +63,16 @@ class LikesViewController: UIViewController {
             guard let self = self else { return }
             switch result {
             case .success(let photos):
-                self.photos = photos
+                if photos.isEmpty {
+                    self.configureLabel()
+                }
+                else {
+                    self.photos = photos
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                        self.view.bringSubviewToFront(self.tableView)
+                    }
+                }
             case .failure(let error):
                 print(error)
             }
