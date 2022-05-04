@@ -11,7 +11,6 @@ import UIKit
 struct Constants {
     static let APIKey = "N1wqDVIrlpV24mawPNS8QkA6Nb2KhFpkUZLrkJZ47eg"
     static let baseURL = "https://api.unsplash.com/"
-    //search/photos?page=1&query=office&client_id=N1wqDVIrlpV24mawPNS8QkA6Nb2KhFpkUZLrkJZ47eg
 }
 
 enum APIErrors: Error {

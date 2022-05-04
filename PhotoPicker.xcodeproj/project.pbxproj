@@ -19,6 +19,8 @@
 		86154ABC2820049300CC2A76 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154ABB2820049300CC2A76 /* PhotoCell.swift */; };
 		86154AC22820072600CC2A76 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AC12820072600CC2A76 /* APICaller.swift */; };
 		86154AC8282009CF00CC2A76 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AC7282009CF00CC2A76 /* Model.swift */; };
+		8654E3402822C19700AC996E /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654E33F2822C19700AC996E /* LikesViewController.swift */; };
+		8654E3422822C35D00AC996E /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654E3412822C35D00AC996E /* LikesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		86154ABB2820049300CC2A76 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		86154AC12820072600CC2A76 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		86154AC7282009CF00CC2A76 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		8654E33F2822C19700AC996E /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
+		8654E3412822C35D00AC996E /* LikesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
 		AB6D2D9411D6038AFC85AE7C /* Pods_PhotoPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -105,6 +109,7 @@
 			children = (
 				86154AA2282001CE00CC2A76 /* FirstViewController.swift */,
 				86154AB7282002B200CC2A76 /* SecondViewController.swift */,
+				8654E33F2822C19700AC996E /* LikesViewController.swift */,
 				86154AB52820022300CC2A76 /* MainTabBarViewController.swift */,
 			);
 			path = Controllers;
@@ -125,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				86154ABB2820049300CC2A76 /* PhotoCell.swift */,
+				8654E3412822C35D00AC996E /* LikesTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,9 +259,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				86154AB8282002B200CC2A76 /* SecondViewController.swift in Sources */,
+				8654E3402822C19700AC996E /* LikesViewController.swift in Sources */,
 				86154AB62820022300CC2A76 /* MainTabBarViewController.swift in Sources */,
 				86154AA9282001CE00CC2A76 /* PhotoPicker.xcdatamodeld in Sources */,
 				86154AA3282001CE00CC2A76 /* FirstViewController.swift in Sources */,
+				8654E3422822C35D00AC996E /* LikesTableViewCell.swift in Sources */,
 				86154AC22820072600CC2A76 /* APICaller.swift in Sources */,
 				86154AC8282009CF00CC2A76 /* Model.swift in Sources */,
 				86154ABC2820049300CC2A76 /* PhotoCell.swift in Sources */,

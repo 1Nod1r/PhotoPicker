@@ -14,6 +14,7 @@ struct PhotoResults: Codable {
 struct Results: Codable {
     let created_at: String
     let urls: Urls
+    let likes: Int
 }
 
 struct Urls: Codable {

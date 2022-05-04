@@ -8,37 +8,10 @@
 import UIKit
 
 class SecondViewController: UIViewController {
-
+    
+    public var completion: ((String)->Void)?
     var photos: [Results] = [Results]()
     var image = ""
-    
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 21, weight: .bold)
-        return label
-    }()
-    
-    private let downloadsNumberLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 21, weight: .bold)
-        return label
-    }()
-    
-    private let dateLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 21, weight: .bold)
-        return label
-    }()
-    
-    private let locationLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 21, weight: .bold)
-        return label
-    }()
     
     private let imageView: UIImageView = {
         let image = UIImageView()
@@ -49,8 +22,19 @@ class SecondViewController: UIViewController {
         return image
     }()
     
+    private let likeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Like", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 10
+        button.backgroundColor = .label
+        button.setTitleColor(UIColor.systemBackground, for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = .label
         view.backgroundColor = .systemBackground
         getPhoto()
         configureUI()
@@ -67,18 +51,33 @@ class SecondViewController: UIViewController {
     
     private func configureUI(){
         view.addSubview(imageView)
-        view.addSubview(nameLabel)
-        view.addSubview(downloadsNumberLabel)
-        view.addSubview(locationLabel)
-        view.addSubview(dateLabel)
+        view.addSubview(likeButton)
+        
+        likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
 
         let padding: CGFloat = 20
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 125),
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            imageView.heightAnchor.constraint(equalToConstant: 300)
+            imageView.heightAnchor.constraint(equalToConstant: 300),
+            
+            likeButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 50),
+            likeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
+            likeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
+            likeButton.heightAnchor.constraint(equalToConstant: 45)
         ])
+    }
+    
+    
+    @objc private func didTapLike(){
+        let alertVC = UIAlertController(title: "Success", message: "You liked photo", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel) {[weak self] action in
+            guard let self = self else { return }
+            self.completion?(self.image)
+        }
+        alertVC.addAction(action)
+        present(alertVC, animated: true)
     }
 
 }

@@ -37,6 +37,7 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         configureSearchController()
         configureCollectionView()
+        
         getPhotos(query: query ?? "nature", page: page)
     }
     
@@ -93,6 +94,7 @@ extension FirstViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SecondViewController()
         vc.image = photos[indexPath.row].urls.regular
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 }
