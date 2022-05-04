@@ -40,12 +40,6 @@ class SecondViewController: UIViewController {
         configureUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(photos)
-        print(indexPath)
-    }
-    
     private func getPhoto(){
         APICaller.shared.getImage(from: image) {image in
             DispatchQueue.main.async {[weak self] in
@@ -80,10 +74,12 @@ class SecondViewController: UIViewController {
         let alertVC = UIAlertController(title: "Success", message: "You liked photo", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel) {[weak self] action in
             guard let self = self else { return }
-            DataPersistenceManager.shared.saveData(model: self.photos[self.indexPath]) { result in
+            DataPersistenceManager.shared.saveData(model: self.photos[self.indexPath]) {[weak self] result in
+                guard let self = self else { return }
                 switch result {
                 case .success():
                     NotificationCenter.default.post(name: NSNotification.Name("liked"), object: nil)
+                    self.navigationController?.popViewController(animated: true)
                 case .failure(let error):
                     print(error)
                 }

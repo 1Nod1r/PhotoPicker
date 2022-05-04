@@ -14,7 +14,7 @@ class LikesViewController: UIViewController {
     private let noLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.font = .systemFont(ofSize: 19, weight: .semibold)
         label.numberOfLines = 2
         label.text = "No Favorites? \nAdd one on the Home Screen!"
         return label
@@ -99,6 +99,11 @@ extension LikesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let vc = ThirdViewController()
+        vc.photos = photos
+        vc.indexPath = indexPath.row
+        vc.image = photos[indexPath.row].photoURL ?? ""
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

@@ -22,6 +22,7 @@
 		8654E3402822C19700AC996E /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654E33F2822C19700AC996E /* LikesViewController.swift */; };
 		8654E3422822C35D00AC996E /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654E3412822C35D00AC996E /* LikesTableViewCell.swift */; };
 		867E90092822EBB80017385A /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E90082822EBB80017385A /* DataPersistenceManager.swift */; };
+		867E900B282305BE0017385A /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E900A282305BE0017385A /* ThirdViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		8654E33F2822C19700AC996E /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
 		8654E3412822C35D00AC996E /* LikesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
 		867E90082822EBB80017385A /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
+		867E900A282305BE0017385A /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		AB6D2D9411D6038AFC85AE7C /* Pods_PhotoPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,9 +98,9 @@
 		86154A9D282001CE00CC2A76 /* PhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
-				86154ABD282006BA00CC2A76 /* Controllers */,
 				86154AC32820072F00CC2A76 /* Managers */,
 				86154AC0282006DD00CC2A76 /* Views */,
+				86154ABD282006BA00CC2A76 /* Controllers */,
 				86154ABE282006CA00CC2A76 /* Support */,
 				86154AAF282001D100CC2A76 /* Info.plist */,
 				86154AA7282001CE00CC2A76 /* PhotoPicker.xcdatamodeld */,
@@ -113,6 +115,7 @@
 				86154AB7282002B200CC2A76 /* SecondViewController.swift */,
 				8654E33F2822C19700AC996E /* LikesViewController.swift */,
 				86154AB52820022300CC2A76 /* MainTabBarViewController.swift */,
+				867E900A282305BE0017385A /* ThirdViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				867E90092822EBB80017385A /* DataPersistenceManager.swift in Sources */,
 				86154A9F282001CE00CC2A76 /* AppDelegate.swift in Sources */,
 				86154AA1282001CE00CC2A76 /* SceneDelegate.swift in Sources */,
+				867E900B282305BE0017385A /* ThirdViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
