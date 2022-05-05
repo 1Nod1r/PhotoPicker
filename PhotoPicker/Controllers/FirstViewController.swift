@@ -18,7 +18,7 @@ class FirstViewController: UIViewController {
         let searchController = UISearchController()
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search for a username..."
+        searchController.searchBar.placeholder = "Search..."
         navigationItem.searchController = searchController
     }
     
