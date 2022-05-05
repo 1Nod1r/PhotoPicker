@@ -99,9 +99,8 @@ extension LikesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = ThirdViewController()
-        vc.photos = photos
-        vc.indexPath = indexPath.row
+        let vc = SecondViewController()
+        vc.likeButton.isHidden = true
         vc.image = photos[indexPath.row].photoURL ?? ""
         navigationController?.pushViewController(vc, animated: true)
     }

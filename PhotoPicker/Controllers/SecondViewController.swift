@@ -22,7 +22,7 @@ class SecondViewController: UIViewController {
         return image
     }()
     
-    private let likeButton: UIButton = {
+    public let likeButton: UIButton = {
         let button = UIButton()
         button.setTitle("Like", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
