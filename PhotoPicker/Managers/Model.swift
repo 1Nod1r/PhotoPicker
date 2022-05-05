@@ -12,6 +12,7 @@ struct PhotoResults: Codable {
 }
 
 struct Results: Codable {
+    let id: String
     let created_at: String
     let urls: Urls
     let likes: Int

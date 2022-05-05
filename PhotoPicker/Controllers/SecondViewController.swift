@@ -22,10 +22,6 @@ class SecondViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 19)
         label.numberOfLines = 0
-//        let date = Date()
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "MMM yyyy"
-//        label.text = formatter.string(from: date)
         return label
     }()
     
@@ -139,6 +135,14 @@ class SecondViewController: UIViewController {
     
     
     @objc private func didTapLike(){
+        if DataPersistenceManager.shared.isEntityAttributeExist(id: photos[indexPath].id, entityName: "PhotoAttributes") {
+            print("already exist")
+            let alertVC = UIAlertController(title: "Failed to like", message: "It seems this photo already in your liked list", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alertVC.addAction(action)
+            present(alertVC, animated: true)
+            return
+        }
         let alertVC = UIAlertController(title: "Success", message: "You liked photo", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel) {[weak self] action in
             guard let self = self else { return }
@@ -156,5 +160,4 @@ class SecondViewController: UIViewController {
         alertVC.addAction(action)
         present(alertVC, animated: true)
     }
-
 }
