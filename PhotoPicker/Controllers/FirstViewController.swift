@@ -93,9 +93,14 @@ extension FirstViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SecondViewController()
-        vc.image = photos[indexPath.row].urls.regular
+        let model = photos[indexPath.row]
+        vc.image = model.urls.regular
         vc.photos = photos
         vc.indexPath = indexPath.row
+        vc.name = model.user.username
+        vc.location = model.user.location ?? "No location :("
+        vc.like = "\(model.likes)"
+        vc.date = model.created_at
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -12,6 +12,42 @@ class SecondViewController: UIViewController {
     var photos: [Results] = [Results]()
     var image = ""
     var indexPath = 0
+    var date = ""
+    var name = ""
+    var location = ""
+    var like = ""
+    
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 19)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 19)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let locationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 19)
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    private let likeLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 19)
+        label.numberOfLines = 0
+        return label
+    }()
     
     private let imageView: UIImageView = {
         let image = UIImageView()
@@ -38,6 +74,10 @@ class SecondViewController: UIViewController {
         view.backgroundColor = .systemBackground
         getPhoto()
         configureUI()
+        dateLabel.text = "Created at: \(date)"
+        nameLabel.text = "Name: \(name)"
+        locationLabel.text = "Location: \(location)"
+        likeLabel.text = "Number of likes: \(like)"
     }
     
     private func getPhoto(){
@@ -51,6 +91,10 @@ class SecondViewController: UIViewController {
     
     private func configureUI(){
         view.addSubview(imageView)
+        view.addSubview(nameLabel)
+        view.addSubview(dateLabel)
+        view.addSubview(locationLabel)
+        view.addSubview(likeLabel)
         view.addSubview(likeButton)
         
         likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
@@ -62,7 +106,27 @@ class SecondViewController: UIViewController {
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             imageView.heightAnchor.constraint(equalToConstant: 300),
             
-            likeButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 50),
+            nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: padding),
+            nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            nameLabel.heightAnchor.constraint(equalToConstant: 24),
+            
+            dateLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: padding),
+            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: 24),
+            
+            locationLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: padding),
+            locationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            locationLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            locationLabel.heightAnchor.constraint(equalToConstant: 24),
+            
+            likeLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: padding),
+            likeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            likeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            likeLabel.heightAnchor.constraint(equalToConstant: 24),
+            
+            likeButton.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: padding),
             likeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
             likeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
             likeButton.heightAnchor.constraint(equalToConstant: 45)
