@@ -100,7 +100,7 @@ extension FirstViewController: UICollectionViewDelegate {
         vc.name = model.user.username
         vc.location = model.user.location ?? "No location :("
         vc.like = "\(model.likes)"
-        vc.date = model.created_at
+        vc.date = model.created_at.convertToDisplayFormat()
         navigationController?.pushViewController(vc, animated: true)
     }
 }

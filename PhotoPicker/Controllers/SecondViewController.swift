@@ -22,6 +22,10 @@ class SecondViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 19)
         label.numberOfLines = 0
+//        let date = Date()
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "MMM yyyy"
+//        label.text = formatter.string(from: date)
         return label
     }()
     

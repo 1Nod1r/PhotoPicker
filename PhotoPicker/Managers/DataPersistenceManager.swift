@@ -29,7 +29,7 @@ class DataPersistenceManager {
         photo.photoURL = model.urls.regular
         photo.name = model.user.username
         photo.location = model.user.location
-        photo.createdAt = model.created_at
+        photo.createdAt = model.created_at.convertToDisplayFormat()
         photo.numberOfLikes = Int64(model.likes)
         
         do {
