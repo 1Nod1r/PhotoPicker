@@ -98,7 +98,7 @@
 		86154A9D282001CE00CC2A76 /* PhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
-				863283BA2823BB4B0052C601 /* LikesViewModel.swift */,
+				863283BC2823BC220052C601 /* ViewModel */,
 				86154AC32820072F00CC2A76 /* Managers */,
 				86154AC0282006DD00CC2A76 /* Views */,
 				86154ABD282006BA00CC2A76 /* Controllers */,
@@ -148,6 +148,14 @@
 				86154AC7282009CF00CC2A76 /* Model.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		863283BC2823BC220052C601 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				863283BA2823BB4B0052C601 /* LikesViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
