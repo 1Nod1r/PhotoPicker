@@ -102,8 +102,8 @@
 		86154A9D282001CE00CC2A76 /* PhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
-				863283C42823CA8F0052C601 /* Extensions */,
 				863283BC2823BC220052C601 /* ViewModel */,
+				863283C42823CA8F0052C601 /* Extensions */,
 				86154AC32820072F00CC2A76 /* Managers */,
 				86154AC0282006DD00CC2A76 /* Views */,
 				86154ABD282006BA00CC2A76 /* Controllers */,

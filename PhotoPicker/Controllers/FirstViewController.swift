@@ -38,7 +38,7 @@ class FirstViewController: UIViewController {
         configureSearchController()
         configureCollectionView()
         
-        getPhotos(query: query ?? "nature", page: page)
+        getPhotos(query: query ?? "random", page: page)
     }
     
     private func getPhotos(query: String,page: Int){
@@ -85,7 +85,7 @@ extension FirstViewController: UICollectionViewDelegate {
             page += 1
             DispatchQueue.main.async {[weak self] in
                 guard let self = self else { return }
-                self.getPhotos(query: self.query ?? "movie", page: self.page)
+                self.getPhotos(query: self.query ?? "random", page: self.page)
                 self.collectionView.reloadData()
             }
         }
@@ -111,7 +111,7 @@ extension FirstViewController: UISearchBarDelegate {
         if let text = searchBar.text {
             query = text
             photos = []
-            getPhotos(query: query ?? "office", page: page)
+            getPhotos(query: query ?? "random", page: page)
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }

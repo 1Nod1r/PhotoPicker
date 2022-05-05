@@ -29,6 +29,7 @@ class LikesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(tableView)
+        title = "Starred"
         tableView.dataSource = self
         tableView.delegate = self
     }
