@@ -97,7 +97,7 @@ extension FirstViewController: UICollectionViewDelegate {
         vc.image = model.urls.regular
         vc.photos = photos
         vc.indexPath = indexPath.row
-        vc.name = model.user.username
+        vc.name = model.user.name
         vc.location = model.user.location ?? "No location :("
         vc.like = "\(model.likes)"
         vc.date = model.created_at.convertToDisplayFormat()

@@ -20,7 +20,7 @@ struct Results: Codable {
 }
 
 struct User: Codable {
-    let username: String
+    let name: String
     let location: String?
 }
 

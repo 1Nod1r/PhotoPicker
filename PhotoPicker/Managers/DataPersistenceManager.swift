@@ -27,7 +27,7 @@ class DataPersistenceManager {
         let photo = PhotoAttributes(context: context)
         
         photo.photoURL = model.urls.regular
-        photo.name = model.user.username
+        photo.name = model.user.name
         photo.location = model.user.location
         photo.createdAt = model.created_at.convertToDisplayFormat()
         photo.numberOfLikes = Int64(model.likes)
