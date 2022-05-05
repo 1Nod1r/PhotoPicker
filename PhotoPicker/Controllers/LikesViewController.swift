@@ -89,7 +89,7 @@ extension LikesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LikesTableViewCell.identifier, for: indexPath) as? LikesTableViewCell else { return UITableViewCell() }
-        cell.set(with: photos[indexPath.row].photoURL!)
+        cell.set(with: LikesViewModel(name: photos[indexPath.row].name ?? "", imageUrl: photos[indexPath.row].photoURL ?? ""))
         return cell
     }
     
@@ -101,7 +101,12 @@ extension LikesViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = SecondViewController()
         vc.likeButton.isHidden = true
-        vc.image = photos[indexPath.row].photoURL ?? ""
+        let model = photos[indexPath.row]
+        vc.like = "\(Int64(model.numberOfLikes))"
+        vc.name = model.name ?? ""
+        vc.location = model.location ?? ""
+        vc.date = model.createdAt ?? ""
+        vc.image = model.photoURL ?? ""
         navigationController?.pushViewController(vc, animated: true)
     }
     

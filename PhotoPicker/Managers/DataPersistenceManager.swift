@@ -27,6 +27,10 @@ class DataPersistenceManager {
         let photo = PhotoAttributes(context: context)
         
         photo.photoURL = model.urls.regular
+        photo.name = model.user.username
+        photo.location = model.user.location
+        photo.createdAt = model.created_at
+        photo.numberOfLikes = Int64(model.likes)
         
         do {
             try context.save()

@@ -19,6 +19,7 @@
 		86154ABC2820049300CC2A76 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154ABB2820049300CC2A76 /* PhotoCell.swift */; };
 		86154AC22820072600CC2A76 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AC12820072600CC2A76 /* APICaller.swift */; };
 		86154AC8282009CF00CC2A76 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AC7282009CF00CC2A76 /* Model.swift */; };
+		863283BB2823BB4B0052C601 /* LikesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863283BA2823BB4B0052C601 /* LikesViewModel.swift */; };
 		8654E3402822C19700AC996E /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654E33F2822C19700AC996E /* LikesViewController.swift */; };
 		8654E3422822C35D00AC996E /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654E3412822C35D00AC996E /* LikesTableViewCell.swift */; };
 		867E90092822EBB80017385A /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E90082822EBB80017385A /* DataPersistenceManager.swift */; };
@@ -40,6 +41,7 @@
 		86154ABB2820049300CC2A76 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		86154AC12820072600CC2A76 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		86154AC7282009CF00CC2A76 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		863283BA2823BB4B0052C601 /* LikesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewModel.swift; sourceTree = "<group>"; };
 		8654E33F2822C19700AC996E /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
 		8654E3412822C35D00AC996E /* LikesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
 		867E90082822EBB80017385A /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		86154A9D282001CE00CC2A76 /* PhotoPicker */ = {
 			isa = PBXGroup;
 			children = (
+				863283BA2823BB4B0052C601 /* LikesViewModel.swift */,
 				86154AC32820072F00CC2A76 /* Managers */,
 				86154AC0282006DD00CC2A76 /* Views */,
 				86154ABD282006BA00CC2A76 /* Controllers */,
@@ -265,6 +268,7 @@
 				8654E3402822C19700AC996E /* LikesViewController.swift in Sources */,
 				86154AB62820022300CC2A76 /* MainTabBarViewController.swift in Sources */,
 				86154AA9282001CE00CC2A76 /* PhotoPicker.xcdatamodeld in Sources */,
+				863283BB2823BB4B0052C601 /* LikesViewModel.swift in Sources */,
 				86154AA3282001CE00CC2A76 /* FirstViewController.swift in Sources */,
 				8654E3422822C35D00AC996E /* LikesTableViewCell.swift in Sources */,
 				86154AC22820072600CC2A76 /* APICaller.swift in Sources */,
