@@ -59,7 +59,7 @@ class SecondViewController: UIViewController {
     }()
     
     public let likeButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: UIButton.ButtonType.system)
         button.setTitle("Like", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 10

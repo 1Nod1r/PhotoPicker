@@ -25,6 +25,7 @@
 		8654E3402822C19700AC996E /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654E33F2822C19700AC996E /* LikesViewController.swift */; };
 		8654E3422822C35D00AC996E /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654E3412822C35D00AC996E /* LikesTableViewCell.swift */; };
 		867E90092822EBB80017385A /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E90082822EBB80017385A /* DataPersistenceManager.swift */; };
+		869B3AC02830ECC00087F858 /* FirstViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B3ABF2830ECC00087F858 /* FirstViewControllerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		8654E33F2822C19700AC996E /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
 		8654E3412822C35D00AC996E /* LikesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
 		867E90082822EBB80017385A /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
+		869B3ABF2830ECC00087F858 /* FirstViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewControllerViewModel.swift; sourceTree = "<group>"; };
 		AB6D2D9411D6038AFC85AE7C /* Pods_PhotoPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				86154AA2282001CE00CC2A76 /* FirstViewController.swift */,
+				869B3ABF2830ECC00087F858 /* FirstViewControllerViewModel.swift */,
 				86154AB7282002B200CC2A76 /* SecondViewController.swift */,
 				8654E33F2822C19700AC996E /* LikesViewController.swift */,
 				86154AB52820022300CC2A76 /* MainTabBarViewController.swift */,
@@ -286,6 +289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				869B3AC02830ECC00087F858 /* FirstViewControllerViewModel.swift in Sources */,
 				86154AB8282002B200CC2A76 /* SecondViewController.swift in Sources */,
 				8654E3402822C19700AC996E /* LikesViewController.swift in Sources */,
 				86154AB62820022300CC2A76 /* MainTabBarViewController.swift in Sources */,

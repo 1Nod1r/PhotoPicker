@@ -37,7 +37,6 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         configureSearchController()
         configureCollectionView()
-        
         getPhotos(query: query ?? "random", page: page)
     }
     
