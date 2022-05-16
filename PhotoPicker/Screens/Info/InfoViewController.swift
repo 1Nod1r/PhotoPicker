@@ -61,17 +61,7 @@ class InfoViewController: UIViewController {
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
-    
-    public let likeButton: UIButton = {
-        let button = UIButton(type: UIButton.ButtonType.system)
-        button.setTitle("Like", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.layer.cornerRadius = 10
-        button.backgroundColor = .label
-        button.setTitleColor(UIColor.systemBackground, for: .normal)
-        return button
-    }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -104,9 +94,6 @@ class InfoViewController: UIViewController {
         view.addSubview(dateLabel)
         view.addSubview(locationLabel)
         view.addSubview(likeLabel)
-        view.addSubview(likeButton)
-        
-        likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
 
         let padding: CGFloat = 20
         NSLayoutConstraint.activate([
@@ -133,31 +120,8 @@ class InfoViewController: UIViewController {
             likeLabel.topAnchor.constraint(equalTo: locationLabel.bottomAnchor, constant: padding),
             likeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             likeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            likeLabel.heightAnchor.constraint(equalToConstant: 24),
-            
-            likeButton.topAnchor.constraint(equalTo: likeLabel.bottomAnchor, constant: padding),
-            likeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 100),
-            likeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -100),
-            likeButton.heightAnchor.constraint(equalToConstant: 45)
+            likeLabel.heightAnchor.constraint(equalToConstant: 24)
         ])
     }
     
-    
-    @objc private func didTapLike(){
-        if DataPersistenceManager.shared.isEntityAttributeExist(id: self.viewModel.model.id ?? "", entityName: "PhotoAttributes") {
-            print("already exist")
-            let alertVC = UIAlertController(title: "Failed to like", message: "It seems this photo already in your liked list", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            alertVC.addAction(action)
-            present(alertVC, animated: true)
-            return
-        }
-        let alertVC = UIAlertController(title: "Success", message: "You liked photo", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel) {[weak self] action in
-            guard let self = self else { return }
-           // self.viewModel.getPhotos()
-        }
-        alertVC.addAction(action)
-        present(alertVC, animated: true)
-    }
 }

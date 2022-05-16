@@ -146,9 +146,11 @@ class PhotoViewController: UIViewController {
     
     @objc private func didTapLike(){
         if DataPersistenceManager.shared.isEntityAttributeExist(id: self.viewModel.model.id, entityName: "PhotoAttributes") {
+            
             print("already exist")
             let alertVC = UIAlertController(title: "Failed to like", message: "It seems this photo already in your liked list", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            
             alertVC.addAction(action)
             present(alertVC, animated: true)
             return
