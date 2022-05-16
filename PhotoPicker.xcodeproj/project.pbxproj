@@ -8,14 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0B9E932E53398BDDB340FDEC /* Pods_PhotoPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB6D2D9411D6038AFC85AE7C /* Pods_PhotoPicker.framework */; };
+		8601855728329CB300C8A869 /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8601855628329CB300C8A869 /* PhotoViewModel.swift */; };
 		86154A9F282001CE00CC2A76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154A9E282001CE00CC2A76 /* AppDelegate.swift */; };
 		86154AA1282001CE00CC2A76 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AA0282001CE00CC2A76 /* SceneDelegate.swift */; };
-		86154AA3282001CE00CC2A76 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AA2282001CE00CC2A76 /* FirstViewController.swift */; };
+		86154AA3282001CE00CC2A76 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AA2282001CE00CC2A76 /* HomeViewController.swift */; };
 		86154AA9282001CE00CC2A76 /* PhotoPicker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 86154AA7282001CE00CC2A76 /* PhotoPicker.xcdatamodeld */; };
 		86154AAB282001D100CC2A76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86154AAA282001D100CC2A76 /* Assets.xcassets */; };
 		86154AAE282001D100CC2A76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86154AAC282001D100CC2A76 /* LaunchScreen.storyboard */; };
 		86154AB62820022300CC2A76 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AB52820022300CC2A76 /* MainTabBarViewController.swift */; };
-		86154AB8282002B200CC2A76 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AB7282002B200CC2A76 /* SecondViewController.swift */; };
+		86154AB8282002B200CC2A76 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AB7282002B200CC2A76 /* PhotoViewController.swift */; };
 		86154ABC2820049300CC2A76 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154ABB2820049300CC2A76 /* PhotoCell.swift */; };
 		86154AC22820072600CC2A76 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AC12820072600CC2A76 /* APICaller.swift */; };
 		86154AC8282009CF00CC2A76 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86154AC7282009CF00CC2A76 /* Model.swift */; };
@@ -25,21 +26,26 @@
 		8654E3402822C19700AC996E /* LikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654E33F2822C19700AC996E /* LikesViewController.swift */; };
 		8654E3422822C35D00AC996E /* LikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654E3412822C35D00AC996E /* LikesTableViewCell.swift */; };
 		867E90092822EBB80017385A /* DataPersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867E90082822EBB80017385A /* DataPersistenceManager.swift */; };
+		867FA5182832B93300BF356F /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867FA5172832B93300BF356F /* LikeViewModel.swift */; };
+		867FA51A2832CDC700BF356F /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867FA5192832CDC700BF356F /* InfoViewController.swift */; };
+		867FA51C2832CFA800BF356F /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867FA51B2832CFA800BF356F /* InfoViewModel.swift */; };
+		869B3AC22830F4240087F858 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869B3AC12830F4240087F858 /* HomeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		032AE904B2D9DA8C18FBA16E /* Pods-PhotoPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoPicker.release.xcconfig"; path = "Target Support Files/Pods-PhotoPicker/Pods-PhotoPicker.release.xcconfig"; sourceTree = "<group>"; };
 		48A61E9A83AB0F071BEAC971 /* Pods-PhotoPicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhotoPicker.debug.xcconfig"; path = "Target Support Files/Pods-PhotoPicker/Pods-PhotoPicker.debug.xcconfig"; sourceTree = "<group>"; };
+		8601855628329CB300C8A869 /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		86154A9B282001CE00CC2A76 /* PhotoPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86154A9E282001CE00CC2A76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86154AA0282001CE00CC2A76 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		86154AA2282001CE00CC2A76 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		86154AA2282001CE00CC2A76 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		86154AA8282001CE00CC2A76 /* PhotoPicker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoPicker.xcdatamodel; sourceTree = "<group>"; };
 		86154AAA282001D100CC2A76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86154AAD282001D100CC2A76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86154AAF282001D100CC2A76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86154AB52820022300CC2A76 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		86154AB7282002B200CC2A76 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		86154AB7282002B200CC2A76 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		86154ABB2820049300CC2A76 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		86154AC12820072600CC2A76 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		86154AC7282009CF00CC2A76 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
@@ -49,6 +55,10 @@
 		8654E33F2822C19700AC996E /* LikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesViewController.swift; sourceTree = "<group>"; };
 		8654E3412822C35D00AC996E /* LikesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesTableViewCell.swift; sourceTree = "<group>"; };
 		867E90082822EBB80017385A /* DataPersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistenceManager.swift; sourceTree = "<group>"; };
+		867FA5172832B93300BF356F /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
+		867FA5192832CDC700BF356F /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		867FA51B2832CFA800BF356F /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
+		869B3AC12830F4240087F858 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		AB6D2D9411D6038AFC85AE7C /* Pods_PhotoPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,6 +91,33 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		86018551283292AC00C8A869 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				86154AA2282001CE00CC2A76 /* HomeViewController.swift */,
+				869B3AC12830F4240087F858 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		86018552283292DC00C8A869 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				86154AB7282002B200CC2A76 /* PhotoViewController.swift */,
+				8601855628329CB300C8A869 /* PhotoViewModel.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		860185532832930600C8A869 /* Likes */ = {
+			isa = PBXGroup;
+			children = (
+				8654E33F2822C19700AC996E /* LikesViewController.swift */,
+				867FA5172832B93300BF356F /* LikeViewModel.swift */,
+			);
+			path = Likes;
+			sourceTree = "<group>";
+		};
 		86154A92282001CE00CC2A76 = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +143,7 @@
 				863283C42823CA8F0052C601 /* Extensions */,
 				86154AC32820072F00CC2A76 /* Managers */,
 				86154AC0282006DD00CC2A76 /* Views */,
-				86154ABD282006BA00CC2A76 /* Controllers */,
+				86154ABD282006BA00CC2A76 /* Screens */,
 				86154ABE282006CA00CC2A76 /* Support */,
 				86154AAF282001D100CC2A76 /* Info.plist */,
 				86154AA7282001CE00CC2A76 /* PhotoPicker.xcdatamodeld */,
@@ -114,15 +151,16 @@
 			path = PhotoPicker;
 			sourceTree = "<group>";
 		};
-		86154ABD282006BA00CC2A76 /* Controllers */ = {
+		86154ABD282006BA00CC2A76 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				86154AA2282001CE00CC2A76 /* FirstViewController.swift */,
-				86154AB7282002B200CC2A76 /* SecondViewController.swift */,
-				8654E33F2822C19700AC996E /* LikesViewController.swift */,
+				86018551283292AC00C8A869 /* Home */,
+				867FA51D2832D09E00BF356F /* Info */,
+				860185532832930600C8A869 /* Likes */,
+				86018552283292DC00C8A869 /* Photo */,
 				86154AB52820022300CC2A76 /* MainTabBarViewController.swift */,
 			);
-			path = Controllers;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 		86154ABE282006CA00CC2A76 /* Support */ = {
@@ -170,6 +208,15 @@
 				863283C72823CAA00052C601 /* String+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		867FA51D2832D09E00BF356F /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				867FA5192832CDC700BF356F /* InfoViewController.swift */,
+				867FA51B2832CFA800BF356F /* InfoViewModel.swift */,
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,21 +333,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86154AB8282002B200CC2A76 /* SecondViewController.swift in Sources */,
+				86154AB8282002B200CC2A76 /* PhotoViewController.swift in Sources */,
 				8654E3402822C19700AC996E /* LikesViewController.swift in Sources */,
 				86154AB62820022300CC2A76 /* MainTabBarViewController.swift in Sources */,
+				869B3AC22830F4240087F858 /* HomeViewModel.swift in Sources */,
 				863283C82823CAA00052C601 /* String+Ext.swift in Sources */,
 				86154AA9282001CE00CC2A76 /* PhotoPicker.xcdatamodeld in Sources */,
 				863283BB2823BB4B0052C601 /* LikesViewModel.swift in Sources */,
 				863283C62823CA9A0052C601 /* Date+Ext.swift in Sources */,
-				86154AA3282001CE00CC2A76 /* FirstViewController.swift in Sources */,
+				86154AA3282001CE00CC2A76 /* HomeViewController.swift in Sources */,
 				8654E3422822C35D00AC996E /* LikesTableViewCell.swift in Sources */,
+				867FA51C2832CFA800BF356F /* InfoViewModel.swift in Sources */,
 				86154AC22820072600CC2A76 /* APICaller.swift in Sources */,
+				867FA5182832B93300BF356F /* LikeViewModel.swift in Sources */,
 				86154AC8282009CF00CC2A76 /* Model.swift in Sources */,
+				8601855728329CB300C8A869 /* PhotoViewModel.swift in Sources */,
 				86154ABC2820049300CC2A76 /* PhotoCell.swift in Sources */,
 				867E90092822EBB80017385A /* DataPersistenceManager.swift in Sources */,
 				86154A9F282001CE00CC2A76 /* AppDelegate.swift in Sources */,
 				86154AA1282001CE00CC2A76 /* SceneDelegate.swift in Sources */,
+				867FA51A2832CDC700BF356F /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

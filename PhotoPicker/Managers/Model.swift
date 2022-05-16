@@ -14,9 +14,10 @@ struct PhotoResults: Codable {
 struct Results: Codable {
     let id: String
     let created_at: String
-    let urls: Urls
+    let urls: Url
     let likes: Int
     let user: User
+    
 }
 
 struct User: Codable {
@@ -24,6 +25,8 @@ struct User: Codable {
     let location: String?
 }
 
-struct Urls: Codable {
+struct Url: Codable {
     let regular: String
 }
+
+

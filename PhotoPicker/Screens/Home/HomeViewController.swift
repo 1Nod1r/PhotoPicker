@@ -7,12 +7,19 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     var collectionView: UICollectionView!
-    var photos: [Results] = [Results]()
-    var page = 0
-    var query: String?
+
+    let viewModel: HomeViewModel
+    init(viewModel: HomeViewModel){
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func configureSearchController(){
         let searchController = UISearchController()
@@ -37,22 +44,8 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         configureSearchController()
         configureCollectionView()
-        getPhotos(query: query ?? "random", page: page)
-    }
-    
-    private func getPhotos(query: String,page: Int){
-        APICaller.shared.getPhotos(page: page, query: query) {[weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let results):
-                self.photos.append(contentsOf: results)
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
+        viewModel.loadPhotos()
+        setupBinding()
     }
     
     override func viewDidLayoutSubviews() {
@@ -60,60 +53,54 @@ class FirstViewController: UIViewController {
         collectionView.frame = view.bounds
     }
     
+    func setupBinding(){
+        viewModel.didChange = {[weak self] in
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
+    }
 }
 
-extension FirstViewController: UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photos.count
+        return viewModel.numberOfPhotos()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as? PhotoCell else { return UICollectionViewCell() }
-        let model = photos[indexPath.row]
+        let model = viewModel.item(for: indexPath.row)
         cell.set(with: model.urls.regular)
         return cell
     }
 }
 
-extension FirstViewController: UICollectionViewDelegate {
+extension HomeViewController: UICollectionViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         let offSetY = scrollView.contentOffset.y
         let contentHeight = scrollView.contentSize.height
         let height = scrollView.frame.size.height
         if offSetY > contentHeight - height {
-            page += 1
-            DispatchQueue.main.async {[weak self] in
-                guard let self = self else { return }
-                self.getPhotos(query: self.query ?? "random", page: self.page)
-                self.collectionView.reloadData()
-            }
+            viewModel.page += 1
+            viewModel.loadPhotos()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = SecondViewController()
-        let model = photos[indexPath.row]
-        vc.image = model.urls.regular
-        vc.photos = photos
-        vc.indexPath = indexPath.row
-        vc.name = model.user.name
-        vc.location = model.user.location ?? "No location :("
-        vc.like = "\(model.likes)"
-        vc.date = model.created_at.convertToDisplayFormat()
+        let model = viewModel.item(for: indexPath.row)
+        let photoViewModel = PhotoViewModel(model: model)
+        let vc = PhotoViewController(viewModel: photoViewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
 }
 
-extension FirstViewController: UISearchBarDelegate {
+extension HomeViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let text = searchBar.text {
-            query = text
-            photos = []
-            getPhotos(query: query ?? "random", page: page)
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
+            viewModel.query = text
+            viewModel.clearPhotos()
+            viewModel.loadPhotos()
         }
     }
 }

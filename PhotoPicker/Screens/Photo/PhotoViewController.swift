@@ -7,15 +7,20 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class PhotoViewController: UIViewController {
     
-    var photos: [Results] = [Results]()
-    var image = ""
-    var indexPath = 0
-    var date = ""
-    var name = ""
-    var location = ""
-    var like = ""
+    
+    
+    let viewModel: PhotoViewModel
+    
+    init(viewModel: PhotoViewModel){
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     private let dateLabel: UILabel = {
         let label = UILabel()
@@ -70,18 +75,23 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        configureUI()
+        getPhoto()
+    }
+    
+    private func configureUI(){
         navigationController?.navigationBar.tintColor = .label
         view.backgroundColor = .systemBackground
-        getPhoto()
-        configureUI()
-        dateLabel.text = "Created at: \(date)"
-        nameLabel.text = "Name: \(name)"
-        locationLabel.text = "Location: \(location)"
-        likeLabel.text = "Number of likes: \(like)"
+        let model = viewModel.model
+        dateLabel.text = "Created at: \(model.created_at.convertToDisplayFormat())"
+        nameLabel.text = "Name: \(model.user.name)"
+        locationLabel.text = "Location: \(model.user.location)"
+        likeLabel.text = "Number of likes: \(model.likes)"
     }
     
     private func getPhoto(){
-        APICaller.shared.getImage(from: image) {image in
+        APICaller.shared.getImage(from: viewModel.model.urls.regular) {image in
             DispatchQueue.main.async {[weak self] in
                 guard let self = self else { return }
                 self.imageView.image = image
@@ -89,7 +99,7 @@ class SecondViewController: UIViewController {
         }
     }
     
-    private func configureUI(){
+    private func setupUI(){
         view.addSubview(imageView)
         view.addSubview(nameLabel)
         view.addSubview(dateLabel)
@@ -135,7 +145,7 @@ class SecondViewController: UIViewController {
     
     
     @objc private func didTapLike(){
-        if DataPersistenceManager.shared.isEntityAttributeExist(id: photos[indexPath].id, entityName: "PhotoAttributes") {
+        if DataPersistenceManager.shared.isEntityAttributeExist(id: self.viewModel.model.id, entityName: "PhotoAttributes") {
             print("already exist")
             let alertVC = UIAlertController(title: "Failed to like", message: "It seems this photo already in your liked list", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
@@ -146,7 +156,7 @@ class SecondViewController: UIViewController {
         let alertVC = UIAlertController(title: "Success", message: "You liked photo", preferredStyle: .alert)
         let action = UIAlertAction(title: "Ok", style: .cancel) {[weak self] action in
             guard let self = self else { return }
-            DataPersistenceManager.shared.saveData(model: self.photos[self.indexPath]) { result in
+            DataPersistenceManager.shared.saveData(model: self.viewModel.model) { result in
                 switch result {
                 case .success():
                     NotificationCenter.default.post(name: NSNotification.Name("liked"), object: nil)

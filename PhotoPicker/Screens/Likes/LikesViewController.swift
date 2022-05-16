@@ -11,6 +11,17 @@ class LikesViewController: UIViewController {
     
     var photos: [PhotoAttributes] = [PhotoAttributes]()
     
+    var viewModel: LikeViewModel
+    
+    init(viewModel: LikeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private let noLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -32,17 +43,24 @@ class LikesViewController: UIViewController {
         title = "Starred"
         tableView.dataSource = self
         tableView.delegate = self
+        setupBinding()
+    }
+    
+    func setupBinding(){
+        viewModel.didChange = {[weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NotificationCenter.default.addObserver(forName: NSNotification.Name("liked"), object: nil, queue: nil) {[weak self] _ in
-            self?.fetchLocalStorageForDownload()
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
+            self?.viewModel.getPhotos()
+            self?.setupBinding()
         }
-        fetchLocalStorageForDownload()
+        viewModel.getPhotos()
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,39 +76,19 @@ class LikesViewController: UIViewController {
         ])
 
     }
-    
-    private func fetchLocalStorageForDownload(){
-        DataPersistenceManager.shared.fetchData {[weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let photos):
-                if photos.isEmpty {
-                    self.configureLabel()
-                }
-                else {
-                    self.photos = photos
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                        self.view.bringSubviewToFront(self.tableView)
-                    }
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-
 
 }
 
 extension LikesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return photos.count
+        return viewModel.numberOfPhotos()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LikesTableViewCell.identifier, for: indexPath) as? LikesTableViewCell else { return UITableViewCell() }
-        cell.set(with: LikesViewModel(name: photos[indexPath.row].name ?? "", imageUrl: photos[indexPath.row].photoURL ?? ""))
+        
+        let model = viewModel.item(for: indexPath.row)
+        cell.set(with: LikesViewModel(name: model.name ?? "", imageUrl: model.photoURL ?? ""))
         return cell
     }
     
@@ -100,32 +98,18 @@ extension LikesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = SecondViewController()
-        vc.likeButton.isHidden = true
-        let model = photos[indexPath.row]
-        vc.like = "\(Int64(model.numberOfLikes))"
-        vc.name = model.name ?? ""
-        vc.location = model.location ?? ""
-        vc.date = model.createdAt ?? ""
-        vc.image = model.photoURL ?? ""
+        let model = viewModel.item(for: indexPath.row)
+        let likeViewModel = InfoViewModel(model: model)
+        let vc = InfoViewController(viewModel: likeViewModel)
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         switch editingStyle {
         case .delete:
-            DispatchQueue.main.async {
-                DataPersistenceManager.shared.deleteFromData(model: self.photos[indexPath.row]) {[weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(()):
-                        print("deleted")
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                    }
-                    self.photos.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
-                }
+            DispatchQueue.main.async {[weak self] in
+                self?.viewModel.deletePhoto(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
             }
             
         case .none:
