@@ -18,6 +18,17 @@ struct Results: Codable {
     let likes: Int
     let user: User
     
+    var url: String {
+        return urls.regular
+    }
+    
+    var location: String {
+        return user.location ?? "No location available :("
+    }
+    
+    var name: String {
+        return user.name
+    }
 }
 
 struct User: Codable {

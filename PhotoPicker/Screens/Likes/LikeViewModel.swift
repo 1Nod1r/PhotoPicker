@@ -20,7 +20,7 @@ final class LikeViewModel {
         DataPersistenceManager.shared.fetchData {[weak self] result in
             switch result {
             case .success(let photos):
-                self?.photos.append(contentsOf: photos)
+                self?.photos = photos
             case .failure(let error):
                 print(error)
             }

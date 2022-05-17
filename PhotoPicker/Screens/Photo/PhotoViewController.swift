@@ -85,16 +85,15 @@ class PhotoViewController: UIViewController {
         view.backgroundColor = .systemBackground
         let model = viewModel.model
         dateLabel.text = "Created at: \(model.created_at.convertToDisplayFormat())"
-        nameLabel.text = "Name: \(model.user.name)"
-        locationLabel.text = "Location: \(model.user.location)"
+        nameLabel.text = "Name: \(model.name)"
+        locationLabel.text = "Location: \(model.location)"
         likeLabel.text = "Number of likes: \(model.likes)"
     }
     
     private func getPhoto(){
-        APICaller.shared.getImage(from: viewModel.model.urls.regular) {image in
-            DispatchQueue.main.async {[weak self] in
-                guard let self = self else { return }
-                self.imageView.image = image
+        viewModel.getImage {[weak self] image in
+            DispatchQueue.main.async {
+                self?.imageView.image = image
             }
         }
     }
@@ -146,7 +145,6 @@ class PhotoViewController: UIViewController {
     
     @objc private func didTapLike(){
         if DataPersistenceManager.shared.isEntityAttributeExist(id: self.viewModel.model.id, entityName: "PhotoAttributes") {
-            
             print("already exist")
             let alertVC = UIAlertController(title: "Failed to like", message: "It seems this photo already in your liked list", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)

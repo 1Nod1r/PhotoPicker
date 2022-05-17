@@ -76,14 +76,13 @@ class InfoViewController: UIViewController {
         dateLabel.text = "Created at: \(model.createdAt ?? "")"
         nameLabel.text = "Name: \(model.name ?? "") "
         locationLabel.text = "Location: \(model.location ?? "")"
-        likeLabel.text = "Number of likes: \(model.numberOfLikes ?? 0)"
+        likeLabel.text = "Number of likes: \(model.numberOfLikes )"
     }
     
     private func getPhoto(){
-        APICaller.shared.getImage(from: viewModel.model.photoURL ?? "") {image in
-            DispatchQueue.main.async {[weak self] in
-                guard let self = self else { return }
-                self.imageView.image = image
+        viewModel.getImage {[weak self] image in
+            DispatchQueue.main.async {
+                self?.imageView.image = image
             }
         }
     }
